@@ -24,4 +24,10 @@ router.delete('/:id', function(req, res) {
     noteController.destroy(req, res);
 });
 
+// Update a note
+router.put('/:id', function(req, res) {
+    console.log('access to update action with id: ', req.params.id);
+    noteController.update(req, res);
+});
+
 export default router;

@@ -48,6 +48,17 @@ export class NoteController {
   const [results, fields] = await dbConnection.query('DELETE FROM notes WHERE id = ?', [req.params.id]);
   res.json({message: 'note deleted', results: results});
   }
+
+  async update(req, res) {
+    const dbConnection = await mysql.createConnection({
+      host: '127.0.0.1',
+      user: 'root',
+      database: 'noteApp'
+  });
+
+  const [results, fields] = await dbConnection.query('UPDATE notes SET ? WHERE id = ?', [updatedNote.text, req.params.id]);
+  res.json({message: 'note updated', results: results});
+  }
 }
 
 
